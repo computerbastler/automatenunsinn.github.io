@@ -106,13 +106,14 @@
         }
 
         function main() {
-            let zlNr = parseInt(document.getElementById('zlNr').value, 10);
+            let zlNr = parseInt(document.getElementById('zlNr').value.replace(".","").trim(), 10);
             let dateInput = document.getElementById('date').value;
             let version = document.getElementById('version').value;
 
             // Convert date to MMYY format and add 4 zeroes
             let dateParts = dateInput.split('-');
-            let code = dateParts[1] + dateParts[0].slice(-2);
+            let datecode = dateParts[1] + dateParts[0].slice(-2);
+            let code = parseInt(dateParts[1] + dateParts[0].slice(-2) + '0000', 10);
 
             let zl = { zlNr: zlNr, code: code };
 
@@ -126,8 +127,7 @@
                 firstPart[i] = String.fromCharCode(zlStr[9 + i] + 0x30);
             }
 
-            console.log(firstPart.join(''));
-            document.getElementById('out').value = code;
+            document.getElementById('out').value = datecode;
 
             let firstNr = zlStr[0];
             for (let i = 0; i < 13; ++i) {
@@ -141,7 +141,7 @@
                 key = generateZlCodeV3(zlStr);
             }
 
-            document.getElementById('out').value += key.toString().padStart(4, '0');
+            document.getElementById('out').value += key.toString();
         }
     </script>
 </head>
