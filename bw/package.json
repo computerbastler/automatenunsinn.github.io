@@ -1,0 +1,22 @@
+{
+  "name": "bw",
+  "version": "1.0.0",
+  "description": "bw keygen",
+  "license": "ISC",
+  "author": "",
+  "type": "ts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@types/base32-encoding": "^1.0.2",
+    "base32-encoding": "^1.0.0",
+    "crc": "^4.3.2",
+    "xtea": "file:xtea-js-1.0.0.tar.gz"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "typescript": "^5.7.3"
+  }
+}
