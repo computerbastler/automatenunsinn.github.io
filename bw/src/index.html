@@ -1,9 +1,38 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>BW</title>
-  </head>
-  <body>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BW Code Generator</title>
+    <style>
+        body {
+            font-size: 2em;
+        }
+
+        label,
+        input,
+        select,
+        button {
+            font-size: 1.5em;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
     <script src="app.js"></script>
-  </body>
+</head>
+
+<body>
+    <label for="code1">R-Code</label>
+    <input type="text" maxlength=5 name="code1" id="code1">-
+    <input type="text" maxlength=5 name="code2" id="code2">-
+    <input type="text" maxlength=5 name="code3" id="code3">-
+    <input type="text" maxlength=5 name="code4" id="code4">-
+    <input type="text" maxlength=6 name="code5" id="code5">
+    <br>
+    <input type="date" name="date" id="date">
+    <input type="button" value="Gen" onclick="main()"><br>
+    <label for="out">Code</label><input type="text" name="out" id="out" value=""><br>
+</body>
+
 </html>
