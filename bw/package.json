@@ -2,21 +2,25 @@
   "name": "bw",
   "version": "1.0.0",
   "description": "bw keygen",
-  "license": "ISC",
+  "license": "MIT",
   "author": "",
-  "type": "ts",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack",
+    "start": "webpack && webpack serve",
+    "dev": "webpack serve"
   },
   "dependencies": {
-    "@types/base32-encoding": "^1.0.2",
-    "base32-encoding": "^1.0.0",
-    "crc": "^4.3.2",
-    "xtea": "file:xtea-js-1.0.0.tar.gz"
+    "webpack": "^5.97.1"    
   },
   "devDependencies": {
     "@types/node": "^22.10.7",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "babel-loader": "^9.2.1",
+    "buffer": "^6.0.3",
+    "node-polyfill-webpack-plugin": "^4.1.0",
+    "prettier": "^3.4.2",
+    "ts-loader": "^9.5.2",    
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0"
   }
 }

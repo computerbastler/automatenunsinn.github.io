@@ -19,19 +19,16 @@
             margin: 10px 0;
         }
     </style>
-    <script src="app.js"></script>
+    <script src="bundle.js"></script>
 </head>
 
 <body>
     <label for="code1">R-Code</label>
-    <input type="text" maxlength=5 name="code1" id="code1">-
-    <input type="text" maxlength=5 name="code2" id="code2">-
-    <input type="text" maxlength=5 name="code3" id="code3">-
-    <input type="text" maxlength=5 name="code4" id="code4">-
-    <input type="text" maxlength=6 name="code5" id="code5">
+    <input type="text" maxlength=30 pattern="[2-7A-Z]" name="code" id="code" value="UQVQX-9ZNTX-QICRW-X7Z89-YIRRK2">
     <br>
     <input type="date" name="date" id="date">
-    <input type="button" value="Gen" onclick="main()"><br>
+    <input type="button" value="Parse" onclick="read()"><br>
+    <input type="button" value="Gen" onclick="write()"><br>
     <label for="out">Code</label><input type="text" name="out" id="out" value=""><br>
 </body>
 
