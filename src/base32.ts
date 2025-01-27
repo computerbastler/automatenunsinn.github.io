@@ -71,3 +71,5 @@ export class CustomBase32 {
     return result;
   }
 }
+
+export default CustomBase32;

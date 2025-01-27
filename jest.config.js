@@ -1,4 +1,9 @@
+// jest.config.js
+
 module.exports = {
-    testEnvironment: 'node',
-    // Add any other configuration options here
-  };
+    preset: 'ts-jest',
+    transform: {
+      "^.+\\.(ts|tsx|js)$": "ts-jest"
+    },
+    testTimeout: 2000,
+  }
