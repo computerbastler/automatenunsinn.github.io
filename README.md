@@ -1,8 +1,8 @@
 # automatenunsinn.github.io
 
 M
-[ZL](/public/zl.html)
+[ZL](/dist/zl.html)
 
 
 BW
-[C](/public/bw.html)
+[C](/dist/bw.html)
