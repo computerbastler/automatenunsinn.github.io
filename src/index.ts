@@ -4,8 +4,8 @@ import { Crc8 } from './crc8';
 
 declare global {
   interface Window {
-    read: () => void;
-    write: () => void;
+    parseCode: () => void;
+    genCode: () => void;
   }
 }
 
@@ -152,18 +152,18 @@ export class Fsc {
 
 let bcrypto = new Fsc();
 
-export function read() {
+export function parseCode() {
   let code: string = (<HTMLInputElement>document.getElementById("code")).value;
   bcrypto.decrypt(code);
   (<HTMLInputElement>document.getElementById("date")).valueAsDate = bcrypto.Date;
 }
 
-export function write() {
+export function genCode() {
   let ndate: Date = ((<HTMLInputElement>document.getElementById("date")).valueAsDate!);
   const fsc = bcrypto.encryptFsc(ndate);
   console.log(fsc);
   (<HTMLInputElement>document.getElementById("out")).value = fsc;
 }
 
-window.read = read;
-window.write = write;
+window.parseCode = parseCode;
+window.genCode = genCode;
