@@ -1,6 +1,7 @@
 import { CustomBase32 } from './base32';
 import { Xtea } from './xtea';
 import { Crc8 } from './crc8';
+import { stringify } from 'querystring';
 
 declare global {
   interface Window {
@@ -30,6 +31,18 @@ export class Fsc {
 
   get Date(): Date | null {
     return this.date;
+  }
+
+  private static insertChar(input: string, pos: number, character: string): string {
+    return [input.slice(0, pos), character, input.slice(pos)].join("");
+  }
+
+  private static addHyphens(code: string): string {
+    let output = this.insertChar(code, 20, '-');
+    output = this.insertChar(output, 15, '-');
+    output = this.insertChar(output, 10, '-');
+    output = this.insertChar(output, 5, '-');
+    return output;
   }
 
   private static generateBauartKey(keyInd: number, masterKey: number[]): number[] {
@@ -100,7 +113,7 @@ export class Fsc {
     plaintext[6] = date.getDate();
 
     const keyInd = (this.homologationId >> 5) / 3125 & 0xffff;
-    return this.encrypt(plaintext, keyInd);
+    return Fsc.addHyphens(this.encrypt(plaintext, keyInd));
   }
 
   public encrypt(plaintext: Uint8Array, keyInd: number): string {
