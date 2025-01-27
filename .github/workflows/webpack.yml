@@ -3,10 +3,10 @@ name: Build
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build:
@@ -21,9 +21,10 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies
-        working-directory: ./bw
         run: npm install
 
       - name: Build project
-        working-directory: ./bw
         run: npm run build
+
+      - name: Test project
+        run: npm test
