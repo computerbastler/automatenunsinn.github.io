@@ -52,7 +52,7 @@ export class Fsc {
 
   public decrypt(code: string, keyInd: number = 0): Uint8Array {
     const input = CustomBase32.base32Decode(code);
-    if (input.length !== 17) {
+    if (input.length !== 16) {
       throw new Error('Invalid input length');
     }
     console.log(input);

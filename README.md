@@ -5,4 +5,4 @@ M
 
 
 BW
-[C](/public/index.html)
+[C](/public/bw.html)
