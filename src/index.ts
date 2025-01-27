@@ -55,6 +55,7 @@ export class Fsc {
     if (input.length !== 17) {
       throw new Error('Invalid input length');
     }
+    console.log(input);
 
     this.setKeyInd(keyInd);
     const result = new Uint8Array(16);
