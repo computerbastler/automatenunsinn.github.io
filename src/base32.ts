@@ -44,9 +44,6 @@ export class CustomBase32 {
       }
     }
 
-    // Push any remaining value as a byte
-    if (offset > 0) result.push(value & 0xff);
-
     return new Uint8Array(result);
   }
 
@@ -55,17 +52,19 @@ export class CustomBase32 {
     let num3 = 0;
     let result = '';
 
-    for (let i = 0; i < data.length || num3 > 0; ) {
-      if (num3 < 5 && i < data.length) {
-        num2 |= data[i++] << num3;
-        num3 += 8;
-      }
+    for (let i = 0; i < data.length; i++) {
+      num2 |= data[i] << num3;
+      num3 += 8;
 
-      if (num3 >= 5) {
+      while (num3 >= 5) {
         result += CustomBase32.encBase32(num2 & 31); // Extract 5 bits and encode
         num2 >>= 5;
         num3 -= 5;
       }
+    }
+
+    if (num3 > 0) {
+      result += CustomBase32.encBase32(num2 & 31);
     }
 
     return result;
