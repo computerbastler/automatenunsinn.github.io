@@ -65,10 +65,9 @@ export class Fsc {
 
   public decrypt(code: string, keyInd: number = 0): Uint8Array {
     const input = CustomBase32.base32Decode(code);
-    if (input.length !== 16) {
+    if (input.length % 8 != 0) {
       throw new Error('Invalid input length');
     }
-    console.log(input);
 
     this.setKeyInd(keyInd);
     const result = new Uint8Array(16);
@@ -87,7 +86,7 @@ export class Fsc {
     this.crypto.setData(segment2);
     this.crypto.decrypt();
     result.set(this.crypto.getData(), 8);
-
+    console.log(result);
     if (Crc8.calculateCrc8(result.subarray(0, 15)) !== result[15]) {
       throw new Error('Crc8 failure decoding key');
     }
@@ -117,9 +116,9 @@ export class Fsc {
   }
 
   public encrypt(plaintext: Uint8Array, keyInd: number): string {
-
+    console.log(plaintext);
     plaintext[15] = Crc8.calculateCrc8(plaintext.subarray(0, 15));
-
+    console.log(keyInd);
     this.setKeyInd(keyInd);
 
     const encrypted = new Uint8Array(16);
@@ -137,7 +136,7 @@ export class Fsc {
     this.crypto.setData(segment2);
     this.crypto.encrypt();
     encrypted.set(this.crypto.getData(), 8);
-
+    console.log(encrypted);
     return CustomBase32.base32Encode(encrypted);
   }
 

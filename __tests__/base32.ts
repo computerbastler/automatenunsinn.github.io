@@ -41,3 +41,17 @@ test('Base32 decoding produces correct Uint8Array', () => {
   // Check that the decoded array matches the expected value
   expect(decodedArray).toEqual(expectedArray);
 });
+
+test('Base32 decoding produces correct reverse Uint8Array', () => {
+  // Define a Base32 encoded string
+  const encodedString = '1E288-GX155-WUE7P-QAV4W-NEGN95';
+  
+  // Expected Uint8Array for the encoded string
+  const expectedArray = new Uint8Array([160, 133, 115, 94, 7, 132, 112, 221, 76, 181, 105, 15, 78, 219, 163, 136]);
+  
+  // Decode the encoded string
+  const decodedArray = CustomBase32.base32Decode(encodedString);
+  
+  // Check that the decoded array matches the expected value
+  expect(decodedArray).toEqual(expectedArray);
+});
