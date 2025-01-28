@@ -1,7 +1,6 @@
 import { CustomBase32 } from './base32';
 import { Xtea } from './xtea';
 import { Crc8 } from './crc8';
-import { stringify } from 'querystring';
 
 declare global {
   interface Window {
@@ -86,7 +85,7 @@ export class Fsc {
     this.crypto.setData(segment2);
     this.crypto.decrypt();
     result.set(this.crypto.getData(), 8);
-    console.log(result);
+
     if (Crc8.calculateCrc8(result.subarray(0, 15)) !== result[15]) {
       throw new Error('Crc8 failure decoding key');
     }
@@ -116,9 +115,9 @@ export class Fsc {
   }
 
   public encrypt(plaintext: Uint8Array, keyInd: number): string {
-    console.log(plaintext);
+
     plaintext[15] = Crc8.calculateCrc8(plaintext.subarray(0, 15));
-    console.log(keyInd);
+    console.log(plaintext);
     this.setKeyInd(keyInd);
 
     const encrypted = new Uint8Array(16);
