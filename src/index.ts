@@ -135,7 +135,7 @@ export class Fsc {
     this.crypto.setData(segment2);
     this.crypto.encrypt();
     encrypted.set(this.crypto.getData(), 8);
-    console.log(encrypted);
+
     return CustomBase32.base32Encode(encrypted);
   }
 
@@ -164,13 +164,13 @@ export class Fsc {
 let bcrypto = new Fsc();
 
 export function parseCode() {
-  let code: string = (<HTMLInputElement>document.getElementById("code")).value;
+  const code: string = (<HTMLInputElement>document.getElementById("code")).value;
   bcrypto.decrypt(code);
   (<HTMLInputElement>document.getElementById("date")).valueAsDate = bcrypto.Date;
 }
 
 export function genCode() {
-  let ndate: Date = ((<HTMLInputElement>document.getElementById("date")).valueAsDate!);
+  const ndate: Date = ((<HTMLInputElement>document.getElementById("date")).valueAsDate!);
   const fsc = bcrypto.encryptFsc(ndate);
   console.log(fsc);
   (<HTMLInputElement>document.getElementById("out")).value = fsc;
