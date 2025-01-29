@@ -29,9 +29,10 @@ export class CustomBase32 {
   static base32Decode(code: string): Uint8Array {
     let value = 0;
     let offset = 0;
+    const ncode: string = code.replace("l","1").replace("O","0");
     const result: number[] = [];
 
-    for (const u of code) {
+    for (const u of ncode) {
       if (u === ' ' || u === '-') continue; // Ignore spaces and dashes
 
       value |= CustomBase32.decBase32(u) << offset;
