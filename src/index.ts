@@ -116,7 +116,7 @@ export class Fsc {
 
   public encrypt(plaintext: Uint8Array, keyInd: number): string {
 
-    plaintext[15] = Crc8.calculateCrc8(plaintext.subarray(0, 15));
+    plaintext[15] = Crc8.calculateCrc8(plaintext.subarray(0, 15)) + 1;
     console.log(plaintext);
     this.setKeyInd(keyInd);
 

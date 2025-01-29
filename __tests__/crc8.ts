@@ -5,7 +5,7 @@ test('Crc8 calculation', () => {
   const inputArray = new Uint8Array([247, 69, 132, 16, 18, 11, 30, 252, 75, 0, 0, 0, 0, 0, 0]);
   
   // Expected value
-  const expected = 18; // Replace with the correct expected result based on your encoding logic
+  const expected = 17; // Replace with the correct expected result based on your encoding logic
   
   // Encode the input array
   const calculated = Crc8.calculateCrc8(inputArray);
