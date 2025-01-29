@@ -97,7 +97,7 @@ export class Fsc {
     const year = result[10];
     const month = result[11];
     const day = result[12];
-    this.date = year && month && day ? new Date(2000 + year, month - 1, day) : null;
+    this.date = year && month && day ? new Date(2000 + year, month - 1, day + 1) : null;
 
     return result;
   }
