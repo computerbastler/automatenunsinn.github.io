@@ -33,7 +33,7 @@ export class CustomBase32 {
     const result: number[] = [];
 
     for (const u of ncode) {
-      if (u === ' ' || u === '-') continue; // Ignore spaces and dashes
+      if (u === ' ' || u === '-' || u === '_') continue; // Ignore spaces and dashes
 
       value |= CustomBase32.decBase32(u) << offset;
       offset += 5;
