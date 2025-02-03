@@ -6,6 +6,7 @@ declare global {
   interface Window {
     parseCode: () => void;
     genCode: () => void;
+    maxDate: () => void;
   }
 }
 
@@ -176,5 +177,10 @@ export function genCode() {
   (<HTMLInputElement>document.getElementById("out")).value = fsc;
 }
 
+export function maxDate() {
+  (<HTMLInputElement>document.getElementById("date")).value = "2089-01-01";
+}
+
 window.parseCode = parseCode;
 window.genCode = genCode;
+window.maxDate = maxDate;
