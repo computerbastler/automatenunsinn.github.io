@@ -180,6 +180,7 @@ export function genCode() {
     const fsc = bcrypto.encryptFsc(ndate);
     (<HTMLInputElement>document.getElementById("out")).value = fsc;
     (<HTMLInputElement>document.getElementById("date")).style.backgroundColor = "#353";
+    (<HTMLInputElement>document.getElementById("out")).style.animation = "shine 1s ease-in infinite";
   } catch(e) {
     (<HTMLInputElement>document.getElementById("date")).style.backgroundColor = "#533";
   }
