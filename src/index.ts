@@ -99,7 +99,6 @@ export class Fsc {
     const month = result[11];
     const day = result[12];
     this.date = year && month && day ? new Date(2000 + year, month - 1, day + 1) : null;
-
     return result;
   }
 
@@ -166,15 +165,24 @@ let bcrypto = new Fsc();
 
 export function parseCode() {
   const code: string = (<HTMLInputElement>document.getElementById("code")).value;
-  bcrypto.decrypt(code);
-  (<HTMLInputElement>document.getElementById("date")).valueAsDate = bcrypto.Date;
+  try {
+    bcrypto.decrypt(code);
+    (<HTMLInputElement>document.getElementById("date")).valueAsDate = bcrypto.Date;
+    (<HTMLInputElement>document.getElementById("code")).style.backgroundColor = "#353";
+  } catch(e) {
+    (<HTMLInputElement>document.getElementById("code")).style.backgroundColor = "#533";
+  }
 }
 
 export function genCode() {
-  const ndate: Date = ((<HTMLInputElement>document.getElementById("date")).valueAsDate!);
-  const fsc = bcrypto.encryptFsc(ndate);
-  console.log(fsc);
-  (<HTMLInputElement>document.getElementById("out")).value = fsc;
+  try {
+    const ndate: Date = ((<HTMLInputElement>document.getElementById("date")).valueAsDate!);
+    const fsc = bcrypto.encryptFsc(ndate);
+    (<HTMLInputElement>document.getElementById("out")).value = fsc;
+    (<HTMLInputElement>document.getElementById("date")).style.backgroundColor = "#353";
+  } catch(e) {
+    (<HTMLInputElement>document.getElementById("date")).style.backgroundColor = "#533";
+  }
 }
 
 export function maxDate() {
