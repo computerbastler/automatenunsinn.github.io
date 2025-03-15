@@ -120,18 +120,20 @@
         <input type="text" maxlength=30 size=30 pattern="[2-7A-Z]" name="code" id="code" value="XXXXX-XXXXX-XXXXX-XXXXX-XXXXXX"><br>
         <div class="button-group">
             <input type="button" value="PrÃ¼ffen" onclick="parseCode()">
-            <input type="button" value="Generien" onclick="genCode()">
         </div>
-        <label for="date">Date</label>
+        <label for="date">Datum</label>
         <input type="date" name="date" id="date" min="1989-01-01" max="2089-12-31"><br>
         <div class="button-group">
             <input type="button" value="3+" onclick="addThreeYears()">
-            <input type="button" value="2089" onclick="maxDate()">
+            <input type="button" value="2089" onclick="maxDate()"><br>
         </div>
         <div class="output">
             <label for="out">Code</label>
             <input type="text" size=30 name="out" id="out" value=""><br>
         </div>
+	<div class="button-group">
+    	<input type="button" value="Generien" onclick="genCode()">
+	</div>
     </div>
 </body>
 
