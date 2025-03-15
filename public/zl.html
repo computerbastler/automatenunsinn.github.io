@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZL Code Generator</title>
+    <title>ADP Merkur Code Generator</title>
     <link rel="stylesheet" href="style.css">
     <script>
         function blockAlgorithm(data, dataArray) {
@@ -94,24 +94,13 @@
 
         function main() {
             let zlNr = parseInt(document.getElementById('zlNr').value.replace(".","").trim(), 10);
-            let dateField = document.getElementById('date');
             let version = document.getElementById('version').value;
 
-            if (dateField.value == "") {
-                dateField.style.backgroundColor = "#533";
-                const today = new Date();
-                const futureDate = new Date(today.setFullYear(today.getFullYear() + 2));
-                dateField.valueAsDate = futureDate;
-            } else {
-                dateField.style.backgroundColor = "#353";
-            }
-
-            let dateInput = dateField.value;
-
-            // Convert date to MMYY format and add 4 zeroes
-            let dateParts = dateInput.split('-');
-            let datecode = dateParts[1] + dateParts[0].slice(-2);
-            let code = parseInt(dateParts[1] + dateParts[0].slice(-2) + '0000', 10);
+            const today = new Date();
+            const futureDate = new Date(today.setFullYear(today.getFullYear() + 2));
+            let datecode = (futureDate.getMonth() + 1).toString().padStart(2, '0') + futureDate.getFullYear().toString().slice(-2);
+            
+            let code = parseInt(datecode + '0000', 10);
 
             let zl = { zlNr: zlNr, code: code };
 
@@ -148,20 +137,16 @@
 <body>
     <div class="container">
         <label for="zlNr">Zulassungsnummer:</label>
-        <input type="text" inputmode="numeric" name="zlNr" id="zlNr" value="000000000"><br>
-        <label for="date">Ablaufdatum:</label>
-        <input type="date" name="date" id="date"><br>
+        <input type="text" inputmode="numeric" name="zlNr" id="zlNr" value=""><br>
         <select name="version" id="version">
-            <option value="V2">Walzengeräte</option>
-            <option value="V3">neuer</option>
+            <option value="V2">WalzengerÃ¤te</option>
+            <option value="V3">Neuer bis TR5 v1</option>
         </select>
-        <input type="button" value="Gen" onclick="main()"><br>
+        <input type="button" value="Code Generien" onclick="main()"><br>
         <div class="output">
             <label for="out">Code:</label>
             <input type="text" name="out" id="out" value=""><br>
         </div>
-        <br>
-        <a href="index.html">Zurück</a>
     </div>
 </body>
 
